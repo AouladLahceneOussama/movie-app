@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import MovieSlider from './movieSlider';
 import Moviecover from './moviecover';
 import MovieCatalogue from './movieCatalogue';
-import Loader from './loader';
 
 
 function MainContent({ watchList, setWatchList }) {

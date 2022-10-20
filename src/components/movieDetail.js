@@ -28,7 +28,7 @@ function MovieDetail({ match }) {
 
         //loader
         setLoader(true);
-        setTimeout( () => {
+        setTimeout(() => {
             setLoader(false);
         }, 1000);
 
@@ -82,15 +82,34 @@ function MovieDetail({ match }) {
         <>
             {
                 loader ?
-                    <Loader/>
+                    <Loader />
                     :
                     <div className="movie-detail">
-                        <div className="movie-detail-cover" style={{ backgroundImage: `linear-gradient(to right, #29323c 0%, #4855638c 100%), url(http://image.tmdb.org/t/p/original/${movie.backdrop_path})` }}>
+                        <div className="movie-detail-actions">
                             <Link to="/" className="goback">
                                 <div >
                                     <i className="fas fa-arrow-alt-circle-left"></i>
                                 </div>
                             </Link>
+
+                            <CircularProgressbar
+                                className="circuralBar"
+                                minValue="0"
+                                maxValue="10"
+                                value={movie.vote_average}
+                                text={movie.vote_average === 0 ? "0" : movie.vote_average}
+                                styles={buildStyles({
+                                    strokeLinecap: 'round',
+                                    textSize: '30px',
+                                    pathColor: 'white',
+                                    textColor: 'white',
+                                    trailColor: '#485563',
+                                })}
+                            />
+                        </div>
+                        <div className="movie-detail-cover" style={{ backgroundImage: `linear-gradient(to right, #29323c 0%, #4855638c 100%), url(http://image.tmdb.org/t/p/original/${movie.backdrop_path})` }}>
+
+
                             <div className="detail">
 
                                 <span className="title">{movie.title}</span>
@@ -112,28 +131,9 @@ function MovieDetail({ match }) {
                                 <span className="overview">{movie.overview}</span>
                             </div>
 
-                            <CircularProgressbar
-                                className="circuralBar"
-                                minValue="0"
-                                maxValue="10"
-                                value={movie.vote_average}
-                                text={movie.vote_average === 0 ? "0" : movie.vote_average}
-                                styles={buildStyles({
-                                    strokeLinecap: 'round',
-                                    textSize: '30px',
-                                    pathColor: 'white',
-                                    textColor: 'white',
-                                    trailColor: '#485563',
-                                })}
-                            />
-
-
-                            <svg className="triangle" width='100%' height="150px" viewBox="0 0 100 100" preserveAspectRatio="none" fill="#485563" >
+                            <svg className="triangle" viewBox="0 0 100 100" preserveAspectRatio="none" fill="#485563" >
                                 <polygon points="100,0 0,100 100,100" />
                             </svg>
-
-                            <iframe className="teaser" width="720" height="400" src={`https://www.youtube.com/embed/${movieTrailer.key}`} title={movieTrailer.title} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"></iframe>
-
                         </div>
 
                         <div className="actors-container">
@@ -142,7 +142,7 @@ function MovieDetail({ match }) {
                                 {
                                     actors.map(actor => (
                                         <div key={actor.id} className="actor">
-                                            <img src={`http://image.tmdb.org/t/p/w185/${actor.profile_path}`} alt={movie.title} />
+                                            <div className="actor-image" style={{ backgroundImage: `url(http://image.tmdb.org/t/p/w185/${actor.profile_path})` }}></div>
                                             <div>
                                                 <div className="actor-detail">
                                                     <span>Original Name</span>
@@ -181,7 +181,7 @@ function MovieDetail({ match }) {
                             </div>
                         </div>
                         <MovieSlider movies={similarMovies} title="Semilar Movies" />
-                    </div >       
+                    </div >
             }
         </>
     );

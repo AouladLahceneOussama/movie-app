@@ -117,7 +117,6 @@ li.slick-active .custom-dot, .custom-dot:hover{
 /*navigation*/
 .nav{
   width:100%;
-  height: 100px;
   background: linear-gradient(60deg, #29323c 0%, #485563 100%);
   color: white;
 }
@@ -254,8 +253,8 @@ li.slick-active .custom-dot, .custom-dot:hover{
   left: 50%;
 }
 
-.nav .sub-nav p{
-  padding: 0 10px;
+.nav .sub-nav{
+  padding-bottom: 1px;
   font-weight: bold;
 }
 
@@ -344,10 +343,14 @@ li.slick-active .custom-dot, .custom-dot:hover{
   text-transform: uppercase;
 }
 
+.slick-initialized{
+  height: 100%;
+}
 /* the slides */
+
 .topRated-slider .slick-slide {
-  height: 200px;
 	margin-left: 8px;
+  padding: 15px 0;
 }
 /* the parent */
 
@@ -433,10 +436,10 @@ li.slick-active .custom-dot, .custom-dot:hover{
 }
 
 .catalogue .search{
-  width: 80%;
-  margin-bottom: 30px;
+  width: 90%;
+  margin: 10px auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
 }
@@ -444,12 +447,12 @@ li.slick-active .custom-dot, .custom-dot:hover{
 .catalogue .search .search-bar{
   position: relative;
   text-align: left;
-  margin-left: 20px;
+  margin: 20px 0 ;
 }
 
 .catalogue .search .search-bar input{
   height: 24px;
-  width: 300px;
+  width: 220px;
   color: white;
   border: none;
   outline: none;
@@ -513,24 +516,26 @@ li.slick-active .custom-dot, .custom-dot:hover{
 }
 
 .catalogue .search .search-select{
-  width: 340px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .catalogue .search .search-select .select{
   position: relative;
+  margin-left:30px;
+  margin-bottom: 10px;
 }
 
 .catalogue .search .search-select select{
-  width: 150px;
+  width: 120px;
   background-color: #29323c;
   border: none;
   outline: none;
   cursor: pointer;
   padding: 5px 10px;
   color: white;
-  margin-right: 10px;
 }
 
 .catalogue .search .search-select .select i{
@@ -641,6 +646,7 @@ li.slick-active .custom-dot, .custom-dot:hover{
 /*movie detail*/
 .movie-detail{
   width: 100%;
+  position: relative;
 }
 
 .movie-detail .movie-detail-cover{
@@ -654,17 +660,30 @@ li.slick-active .custom-dot, .custom-dot:hover{
   position: relative;
 }
 
-.movie-detail .movie-detail-cover .goback{
+.movie-detail .movie-detail-actions{
   position: absolute;
+  z-index: 10;
   top: 20px;
-  left: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.movie-detail .goback{
+  margin-left: 20px;
   color: white;
   font-size: 25px;
   cursor: pointer;
 }
 
+.movie-detail .circuralBar{
+  margin-right: 20px;
+  width: 40px;
+}
+
 .movie-detail .movie-detail-cover .detail{
-  height: 100%;
+  height: 95%;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -731,12 +750,9 @@ li.slick-active .custom-dot, .custom-dot:hover{
 
 }
 
-.movie-detail .movie-detail-cover .circuralBar{
-  width: 60px;
-  margin: 20px;
-}
-
 .movie-detail .movie-detail-cover .triangle{
+  width: 100%;
+  height: 100px;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -744,14 +760,16 @@ li.slick-active .custom-dot, .custom-dot:hover{
 
 .movie-detail .movie-detail-cover .teaser{
   position: absolute;
-  bottom: -100px;
-  right: 150px;
+  bottom: -200px;
+  right: 50px;
   z-index: 10;
+  width: 60%;
+  height: 400px;
 }
 
 .actors-container{
   width: 100%;
-  margin: 150px auto 0 auto;
+  margin: 50px auto 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -772,8 +790,8 @@ li.slick-active .custom-dot, .custom-dot:hover{
 }
 
 .actors-container .actor{
+  align-self: stretch;
   width: 300px;
-  height: 150px;
   display: flex;
   justify-content: flex-start;
   background-color: #29323c;
@@ -784,9 +802,14 @@ li.slick-active .custom-dot, .custom-dot:hover{
   overflow: hidden;
 }
 
+.actors-container .actor .actor-image{
+  width: 100px;
+  background-position: center;
+  background-size: cover;
+}
+
 .actors-container .actor .actor-detail{
-  padding-top: 8px;
-  margin-bottom: -20px;
+  padding: 2px 5px 2px 10px;
 }
 
 .actors-container .actor .actor-detail span{
@@ -795,8 +818,8 @@ li.slick-active .custom-dot, .custom-dot:hover{
 }
 
 .actors-container .actor .actor-detail p{
-  font-size: 15px;
-  margin-top: 0px;
+  font-size: 13px;
+  margin: 0px;
 }
 
 .actors-container .actor img{
@@ -805,33 +828,44 @@ li.slick-active .custom-dot, .custom-dot:hover{
 
 .player{
   width: 100%;
-  margin: 100px 0;
+  margin: 100px auto;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .player-wrapper {
+  width: 100%;
   position: relative;
-  
   display: flex;
-  justify-content: flex-start;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.player-wrapper .react-player{
+  width: 80% !important;
+  height: 450px !important;
 }
 
 .player-wrapper .player-btns{
-  height:360px;
-  overflow-y: scroll;
+  width: 80%;
 }
 
 .player-wrapper .player-btn{
   background-color: #29323c;
-  margin:0 0 2px 2px;
+  margin:4px 2px;
   text-align: left;
-  width: 250px;
   padding: 8px 10px;
   font-size: 12px;
   color: white;
   cursor: pointer;
+  transition: .3s ease-in-out;
+}
+
+.player-wrapper .player-btn:hover{
+  background-color: #29323c8c;
 }
 
 .active{
@@ -936,10 +970,48 @@ li.slick-active .custom-dot, .custom-dot:hover{
   }
 }
 
+/* scroll bar */
+/* width */
+::-webkit-scrollbar {
+  background-color: hsl(235, 24%, 19%);
+  width: 4px;
+}
 
-/*
-my email and password for Odoo
-oussama.tet.9@gmail.com
-oussama123456
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: hsla(235, 21%, 11%, 0.322);
+  box-shadow: 0 0 3px hsl(235, 21%, 11%);
+  border-radius: 10px;
+}
 
-*/
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background-color: white;
+  border-radius: 10px;
+  transition: .3s ease-in-out;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(167, 167, 167, 0.7);
+  transition: .3s ease-in-out;
+
+}
+
+.movie-detail .movie-detail-cover .mobile{
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .movie-detail .movie-detail-cover .desktop{
+    display: none;
+  }
+
+  .movie-detail .movie-detail-cover .detail .overview{
+    width: 100%;
+  }
+
+  .movie-detail .movie-detail-cover .triangle{
+    height: 50px;
+  }
+}  

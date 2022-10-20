@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import Form from './form';
 import Paginate from 'react-paginate';
 import WatchListBtn from './watchListBtn';
-import Loader from './loader';
 
 function MovieCatalogue({ watchList, setWatchList }) {
 
@@ -74,8 +73,7 @@ function MovieCatalogue({ watchList, setWatchList }) {
                 pageCount={allPages}
                 initialPage={0}
                 marginPagesDisplayed={1}
-                pageRangeDisplayed={5}
-                marginPagesDisplayed={2}
+                pageRangeDisplayed={2}
                 previousLabel={<i className="fas fa-angle-left"></i>}
                 nextLabel={<i className="fas fa-angle-right"></i>}
                 containerClassName={'paginate-container'}
